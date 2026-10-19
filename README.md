@@ -47,16 +47,9 @@ The site already reads the public address of **Anglers Acre Bookings** (the defa
 
 The domain stays registered at GoDaddy. Only its website records change to point at Netlify. Email records (MX) and everything else stay as they are.
 
-### 1. Deploy to Netlify with the CLI
+### 1. Deploy to Netlify from GitHub
 
-Drag-and-drop deploys skip the calendar function, so use the CLI. Run these from this folder:
-
-```
-npx netlify-cli login
-npx netlify-cli deploy --prod
-```
-
-When asked, choose **Create & configure a new project** and name it, for example `anglers-acre`. The publish folder comes from `netlify.toml`. When it finishes, open `https://<name>.netlify.app` and check that every page loads.
+The code lives at [github.com/HeyAIHelp/AnglersAcre](https://github.com/HeyAIHelp/AnglersAcre), on the `main` branch. In Netlify, choose **Add new project**, then **Import an existing project**, then **GitHub**, and pick **HeyAIHelp/AnglersAcre**. Leave the build command empty and the publish directory as `.`: `netlify.toml` already sets the publish folder and the functions folder. After that, every push to `main` redeploys the site automatically.
 
 ### 2. Add the domain in Netlify
 
