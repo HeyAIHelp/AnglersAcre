@@ -1,0 +1,16 @@
+# Netlify CLI local state
+.netlify/
+node_modules/
+
+# Local preview settings
+.claude/
+
+# secrets: keys go in Netlify's environment variables, never in the repo
+.env
+.env.*
+
+# OS / editor clutter
+.DS_Store
+Thumbs.db
+desktop.ini
+*.zip

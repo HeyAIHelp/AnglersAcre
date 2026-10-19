@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Request a Stay | Anglers Acre, Waldport, Oregon</title>
+<meta name="description" content="Send your dates to Anglers Acre and we will reply with availability and the rate for your stay on the Alsea River.">
+<meta property="og:title" content="Request a Stay — Anglers Acre">
+<meta property="og:description" content="Send your dates to Anglers Acre and we will reply with availability and the rate for your stay on the Alsea River.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://anglersacre.com/images/photos/hero-sunset-1600.jpg">
+<meta property="og:url" content="https://anglersacre.com/book.html">
+<link rel="canonical" href="https://anglersacre.com/book.html">
+<link rel="icon" href="/images/favicon-64.png" type="image/png">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@500&family=Zilla+Slab:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head solid" id="top">
+  <a class="brand" href="index.html" aria-label="Anglers Acre home">
+    <img class="brand-mark" src="images/logo.png" alt="" width="116" height="132">
+    <span>Anglers Acre</span>
+  </a>
+  <nav class="nav" aria-label="Main">
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-list">Menu</button>
+    <ul id="nav-list">
+      <li><a href="house.html">The house</a></li>
+      <li><a href="river.html">The river</a></li>
+      <li><a href="seasons.html">Seasons</a></li>
+      <li><a href="nearby.html">Nearby</a></li>
+      <li><a href="availability.html">Availability</a></li>
+      <li><a class="nav-cta" href="book.html" aria-current="page">Request a stay</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main" class="inner">
+
+  <!-- BOOK -->
+  <section class="book" aria-labelledby="book-title">
+    <div class="wrap book-grid">
+      <div class="book-intro">
+        <img class="book-logo" src="images/logo.png" alt="" width="116" height="132" loading="lazy">
+        <p class="eyebrow mono">Request a stay</p>
+        <h1 id="book-title">Tell us when you'd like to come.</h1>
+        <p>Rates change with the season, so send your dates and we'll reply by email with availability and the price for your stay.</p>
+        <p><a class="cal-link" href="availability.html">See open nights on the calendar &rarr;</a></p>
+        <p class="book-direct">Rather email directly?<br><a href="mailto:anglersacre@gmail.com">anglersacre@gmail.com</a></p>
+        <address>
+          4633 East Alsea Highway<br>
+          Waldport, Oregon 97394<br>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=4633+E+Alsea+Hwy+Waldport+OR+97394" rel="noopener">Open in Maps</a>
+        </address>
+      </div>
+
+      <form class="book-form" name="booking" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html">
+        <input type="hidden" name="form-name" value="booking">
+        <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+        <div class="field-row">
+          <label>Arriving<input type="date" name="arrival" required></label>
+          <label>Leaving<input type="date" name="departure" required></label>
+        </div>
+        <div class="field-row">
+          <label>Guests
+            <select name="guests" required>
+              <option value="">Choose</option>
+              <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option>
+            </select>
+          </label>
+          <label>Bringing a boat?
+            <select name="boat">
+              <option>No</option>
+              <option>Yes, a drift boat</option>
+              <option>Yes, a motorboat</option>
+              <option>Yes, kayaks or a canoe</option>
+            </select>
+          </label>
+        </div>
+        <label>Name<input type="text" name="name" autocomplete="name" required></label>
+        <label>Email<input type="email" name="email" autocomplete="email" required></label>
+        <label>Anything we should know? <span class="opt">(optional)</span><textarea name="message" rows="4" placeholder="What you're hoping to fish for, pets, arrival time…"></textarea></label>
+        <p class="form-error" id="form-error" role="alert" hidden></p>
+        <button class="btn btn-accent" type="submit">Send date request</button>
+        <p class="form-note">We'll reply by email. Sending a request doesn't book or charge anything.</p>
+      </form>
+    </div>
+  </section>
+
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap foot-grid">
+    <div>
+      <p class="foot-brand"><img src="images/logo.png" alt="" width="116" height="132" loading="lazy">Anglers Acre</p>
+      <p>Riverfront on the Alsea<br>4633 East Alsea Highway, Waldport, OR 97394</p>
+    </div>
+    <div>
+      <p><a href="mailto:anglersacre@gmail.com">anglersacre@gmail.com</a></p>
+      <p><a href="https://www.facebook.com/Anglers-Acre-401873870023617/" rel="noopener">Anglers Acre on Facebook</a></p>
+    </div>
+    <div class="foot-copy">
+      <span>&copy; <span id="year">2026</span> Anglers Acre</span>
+      <span class="built-by">Site built by
+        <a href="https://heyaihelp.com" target="_blank" rel="noopener" aria-label="Hey AI, Help! (opens HeyAIHelp.com)"><img src="images/heyaihelp-logo.png" alt="Hey AI, Help! AI that means business" width="440" height="154" loading="lazy"></a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
