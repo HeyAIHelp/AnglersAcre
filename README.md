@@ -15,8 +15,18 @@ Each menu item has its own page, and each inner page ends with a link to the nex
 | The river | `river.html` | The private dock and ramp, wildlife from the deck, and the "From the dock" strip of the owner's 2024–2026 river photos. |
 | Seasons | `seasons.html` | Month-by-month chart of what's running, with the current month highlighted, and five guest catch photos. The catch photos show past guests, including kids, so check the owner is happy to keep them public. |
 | Nearby | `nearby.html` | Downriver, upriver, and on-the-water activities, with the Alsea Bay Bridge and beach photos. |
-| Availability | `availability.html` | Calendar of open and booked nights from the Google Calendar. "Request these dates" opens the booking form with the dates filled in. |
+| Rates | `rates.html` | Two matching cards. **Short-term stays** (July 1 to September 30): "Ask for rates", 2-night minimum, 3 nights over Independence Day and Labor Day weekends, $100 cleaning fee. **Monthly stays** (October 1 to June 30): $2,300 a month. Also covers check-in (4:00 pm), check-out (11:00 am), and a few house notes. Keep rate events off the bookings calendar: every event there blocks nights. |
+| Availability | `availability.html` | Calendar of open and booked nights from the Google Calendar. Each month shows its rate (Short-term, 2-night minimum, or Monthly at $2,300). Picked dates show the rate and the cleaning fee, and summer stays under the minimum are blocked: 2 nights normally, 3 over Independence Day and Labor Day weekends. The rates live at the top of `js/availability.js` and must match `rates.html`. "Request these dates" opens the booking form with the dates filled in. |
 | Request a stay | `book.html` | Netlify Forms request (dates, guests, boat, name, email, notes). It goes to `thanks.html`. |
+
+## Nightly rates (AA Rates calendar)
+
+`netlify/functions/rates.js` (served at `/api/rates`) reads the **AA Rates** Google Calendar and returns a price for each night. The Availability calendar shows those prices under each date and totals a picked stay, plus the $100 cleaning fee. The Rates page shows the lowest price as "$200 / night and up". If the rates don't load, both pages fall back to "Ask for rates".
+
+- In Netlify, the environment variable `RATES_ICS_URL` holds the calendar's **Secret address in iCal format**. Never put it in this repo.
+- Use one all-day event per night (or a repeating one), titled with just the price, for example `$200`. Weekly repeats, skipped dates and edited single dates all work. A one-off event wins over a repeating one on the same night.
+- Nights with no rate event show no price, and guests see "we'll email your rate".
+- Keep rates **off** the Anglers Acre Bookings calendar: every event there blocks nights.
 
 ## Logo
 

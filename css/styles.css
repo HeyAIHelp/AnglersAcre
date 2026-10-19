@@ -83,7 +83,7 @@ p { margin: 0 0 1em; }
 }
 .nav .nav-cta:hover { background: var(--steelhead-dk); border-color: var(--steelhead-dk); color: #fff; }
 .nav-toggle { display: none; }
-@media (min-width: 761px) {
+@media (min-width: 981px) {
   .site-head:not(.solid):not(.is-stuck) .nav a { color: var(--ink); text-shadow: 0 0 10px rgba(255,255,255,.55); }
   .site-head:not(.solid):not(.is-stuck) .nav a:hover { color: var(--steelhead-dk); }
   .site-head:not(.solid):not(.is-stuck) .nav .nav-cta { color: #fff; text-shadow: none; }
@@ -285,6 +285,32 @@ p { margin: 0 0 1em; }
 .next-page a .mono { color: var(--tide); }
 .next-page a:hover { color: var(--steelhead-dk); }
 
+/* ---------- rates page ---------- */
+.rates { padding-bottom: var(--section); }
+.rate-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: stretch; }
+.rate-card {
+  display: flex; flex-direction: column;
+  background: var(--paper); border: 1px solid var(--line); border-top: 6px solid var(--spruce);
+  border-radius: 14px; padding: clamp(22px, 3vw, 32px);
+}
+.rate-season { color: var(--steelhead-dk); margin-bottom: 10px; }
+.rate-card h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); margin-bottom: 12px; max-width: none; }
+.rate-price { display: flex; align-items: baseline; gap: 6px; min-height: clamp(3.4rem, 6.5vw, 4.4rem); margin-bottom: 18px; font: 600 1.1rem/1 var(--body); color: #3a4d48; }
+.rate-price span { font: 700 clamp(2.8rem, 6vw, 4rem)/1 var(--display); color: var(--steelhead-dk); }
+.rate-price .rate-ask { font-size: clamp(2rem, 4.2vw, 2.8rem); color: var(--ink); }
+.rate-card ul { list-style: none; margin: 0; padding: 0; }
+.rate-card li { padding: 11px 0; border-top: 1px solid var(--line); }
+.rate-card li strong { font-weight: 600; }
+
+.rate-details { display: grid; grid-template-columns: 1fr 1.6fr; gap: clamp(24px, 4vw, 48px); margin-top: clamp(32px, 4vw, 48px); padding-top: 28px; border-top: 2px solid var(--ink); }
+.rate-details h3 { margin-bottom: 14px; }
+.rate-times { display: flex; gap: 32px; margin: 0; }
+.rate-times dt { color: var(--tide); margin-bottom: 4px; }
+.rate-times dd { margin: 0; font: 700 1.6rem/1 var(--display); }
+.rate-notes { margin: 0; padding-left: 1.1em; color: #3a4d48; }
+.rate-notes li { padding: 4px 0; }
+.rate-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+
 /* ---------- thank-you page ---------- */
 .sent { padding-bottom: var(--section); }
 .sent-wrap { max-width: 720px; text-align: center; }
@@ -339,7 +365,14 @@ p { margin: 0 0 1em; }
 .cal-months { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; min-height: 300px; }
 .cal-loading { color: var(--tide); grid-column: 1 / -1; }
 .cal-month { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 16px 14px; }
-.cal-title { font-size: 1.3rem; font-weight: 600; margin-bottom: 10px; }
+.cal-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 10px; margin-bottom: 10px; }
+.cal-title { font-size: 1.3rem; font-weight: 600; margin: 0; }
+.cal-rate {
+  font-size: .66rem; letter-spacing: .08em; text-decoration: none; white-space: nowrap;
+  padding: 5px 9px; border-radius: 999px; background: rgba(31,59,51,.08); color: var(--spruce);
+}
+.cal-rate.is-short { background: rgba(201,86,106,.12); color: var(--steelhead-dk); }
+.cal-rate:hover { background: var(--spruce); color: #fff; }
 .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
 .cal-dow { text-align: center; color: var(--tide); padding-bottom: 6px; font-size: .68rem; }
 .cal-day {
@@ -348,6 +381,11 @@ p { margin: 0 0 1em; }
   box-shadow: inset 0 0 0 1px var(--line); position: relative;
 }
 .cal-day:hover:not(:disabled) { box-shadow: inset 0 0 0 2px var(--ink); }
+.cal-day { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; }
+.cal-day.has-price { height: 52px; }
+.cal-price { font: 500 .62rem/1 var(--mono); color: var(--tide); letter-spacing: .02em; }
+.cal-day.is-arrive .cal-price, .cal-day.is-leave .cal-price { color: #fff; }
+.cal-day.is-stay .cal-price { color: var(--steelhead-dk); }
 .cal-day.is-today::after { content: ""; position: absolute; left: 50%; bottom: 6px; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; background: currentColor; }
 .cal-day.is-past { background: transparent; box-shadow: none; color: rgba(18,32,28,.28); cursor: default; }
 .cal-day.is-booked {
@@ -372,6 +410,8 @@ p { margin: 0 0 1em; }
 }
 .cal-pick p { margin: 0; font-size: 1.05rem; }
 .cal-pick strong { color: #fff; }
+.cal-pick-rate { display: block; margin-top: 6px; font-size: .95rem; color: #b9cbc7; }
+.cal-pick-warn { display: block; margin-top: 8px; font-size: .95rem; font-weight: 600; color: #f6c8bf; }
 .cal-pick-actions { display: flex; flex-wrap: wrap; gap: 10px; }
 .cal-pick .btn-quiet { color: #fff; border-color: rgba(255,255,255,.4); }
 .cal-pick .btn-quiet:hover { border-color: #fff; }
@@ -382,6 +422,7 @@ p { margin: 0 0 1em; }
 
 /* ---------- responsive ---------- */
 @media (max-width: 960px) {
+  .rate-cards, .rate-details { grid-template-columns: 1fr; }
   .preview-grid { grid-template-columns: repeat(2, 1fr); }
   .cta-inner { grid-template-columns: 1fr; gap: 18px; }
   .rooms { grid-template-columns: repeat(2, 1fr); }
@@ -390,7 +431,8 @@ p { margin: 0 0 1em; }
   .reach-col, .reach-col + .reach-col { padding: 24px 0 8px; border-left: 0; }
   .reach-col + .reach-col { border-top: 1px solid var(--line); }
 }
-@media (max-width: 760px) {
+/* the full menu needs about 980px; below that it opens from a Menu button */
+@media (max-width: 980px) {
   .nav-toggle {
     display: block; font: 600 .95rem/1 var(--body); color: #fff; background: transparent;
     border: 2px solid rgba(255,255,255,.5); border-radius: 999px; padding: 9px 16px; cursor: pointer;
@@ -403,6 +445,10 @@ p { margin: 0 0 1em; }
   .nav.is-open ul { display: flex; }
   .nav li a { display: block; padding: 14px 12px; }
   .nav .nav-cta { margin-top: 6px; text-align: center; }
+  .nav ul { left: auto; right: 12px; width: min(320px, calc(100vw - 24px)); }
+}
+
+@media (max-width: 760px) {
   .facts ul { grid-template-columns: 1fr 1fr; }
   .facts li:nth-child(3) { padding-left: 0; border-left: 0; }
   .facts li:nth-child(n+3) { border-top: 1px solid rgba(255,255,255,.14); }
@@ -417,6 +463,8 @@ p { margin: 0 0 1em; }
   .foot-copy { align-items: flex-start; }
   .cal-months { grid-template-columns: 1fr; min-height: 0; }
   .cal-day { height: auto; aspect-ratio: 1; }
+  .cal-day.has-price { height: auto; aspect-ratio: auto; min-height: 46px; }
+  .cal-price { font-size: .56rem; }
 }
 @media (max-width: 520px) {
   .book-logo { display: none; }

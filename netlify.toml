@@ -10,6 +10,12 @@
   to = "/.netlify/functions/availability"
   status = 200
 
+# Nightly prices for the calendar and rates page, read from the AA Rates calendar
+[[redirects]]
+  from = "/api/rates"
+  to = "/.netlify/functions/rates"
+  status = 200
+
 # Project files that live in this folder but aren't part of the website
 [[redirects]]
   from = "/README.md"
