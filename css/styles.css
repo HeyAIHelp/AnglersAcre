@@ -285,6 +285,17 @@ p { margin: 0 0 1em; }
 .next-page a .mono { color: var(--tide); }
 .next-page a:hover { color: var(--steelhead-dk); }
 
+/* ---------- thank-you page ---------- */
+.sent { padding-bottom: var(--section); }
+.sent-wrap { max-width: 720px; text-align: center; }
+.sent-logo { width: auto; height: 110px; margin: 0 auto 18px; }
+.sent h1 { margin: 0 auto 18px; }
+.sent p { color: #3a4d48; font-size: 1.08rem; }
+.sent-dates { font: 600 1.25rem/1.4 var(--display); color: var(--ink) !important; }
+.sent-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 26px; }
+.sent .btn-ghost { color: var(--ink); border-color: var(--line); }
+.sent .btn-ghost:hover { border-color: var(--ink); color: var(--ink); background: transparent; }
+
 /* ---------- home previews ---------- */
 .previews { padding: var(--section) 0; }
 .preview-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }

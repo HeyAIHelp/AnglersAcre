@@ -1,11 +1,14 @@
-// Reads the Anglers Acre Google Calendar and returns booked nights only.
+// Reads the Anglers Acre Bookings Google Calendar and returns booked nights only.
 // Event titles, descriptions and guest details never leave this function.
 //
-// The calendar must be shared publicly as "See only free/busy" (see README).
-// Override the feed with the CALENDAR_ICS_URL environment variable in Netlify.
+// Set CALENDAR_ICS_URL in Netlify (Project configuration > Environment variables)
+// to the calendar's "Secret address in iCal format". Keep it out of this repo:
+// the secret address shows full event details to anyone who has it.
+//
+// The public address is only a fallback. Google leaves events marked
+// "Show as: Free" (the default for all-day events) out of the public
+// free/busy feed, so bookings can go missing without the secret address.
 
-// "Anglers Acre Bookings" calendar, public free/busy address.
-// Never put the calendar's "Secret address" here; it exposes full event details.
 const DEFAULT_ICS =
   "https://calendar.google.com/calendar/ical/224d82027c63bab221baccc8ecf3084b0222891478488e14ccc947fc3662806d%40group.calendar.google.com/public/basic.ics";
 const ZONE = "America/Los_Angeles";
@@ -42,7 +45,7 @@ function parse(ics) {
   for (const line of lines(ics)) {
     if (line === "BEGIN:VEVENT") { ev = {}; continue; }
     if (line === "END:VEVENT") {
-      if (ev && ev.start && ev.status !== "CANCELLED" && ev.transp !== "TRANSPARENT") {
+      if (ev && ev.start && ev.status !== "CANCELLED") {
         let end = ev.end || addDays(ev.start, 1);
         if (end <= ev.start) end = addDays(ev.start, 1);
         busy.push({ start: ev.start, end });
@@ -58,7 +61,6 @@ function parse(ics) {
     if (name === "DTSTART") ev.start = toDate(params, value);
     else if (name === "DTEND") ev.end = toDate(params, value);
     else if (name === "STATUS") ev.status = value.toUpperCase();
-    else if (name === "TRANSP") ev.transp = value.toUpperCase();
   }
   return busy;
 }

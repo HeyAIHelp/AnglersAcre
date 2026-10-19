@@ -79,8 +79,32 @@
         dep.focus();
       } else {
         err.hidden = true;
+        // Remember the request so the thank-you page can repeat it back
+        try {
+          sessionStorage.setItem("aa-request", JSON.stringify({
+            arrival: arr.value, departure: dep.value, guests: form.elements.guests.value
+          }));
+        } catch (_) {}
       }
     });
+  }
+
+  // Thank-you page: repeat the dates the guest sent
+  var sent = document.getElementById("sent-dates");
+  if (sent) {
+    try {
+      var r = JSON.parse(sessionStorage.getItem("aa-request") || "null");
+      if (r && r.arrival && r.departure) {
+        var fmt = function (s) {
+          var p = s.split("-"), d = new Date(+p[0], p[1] - 1, +p[2]);
+          return d.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric", year: "numeric" });
+        };
+        var n = Math.round((new Date(r.departure) - new Date(r.arrival)) / 864e5);
+        sent.textContent = "You asked about " + fmt(r.arrival) + " to " + fmt(r.departure) +
+          " (" + n + " night" + (n === 1 ? "" : "s") + (r.guests ? ", " + r.guests + " guest" + (r.guests === "1" ? "" : "s") : "") + ").";
+        sent.hidden = false;
+      }
+    } catch (_) {}
   }
 
   var y = document.getElementById("year");
